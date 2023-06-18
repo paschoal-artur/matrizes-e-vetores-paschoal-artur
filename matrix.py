@@ -5,21 +5,24 @@ from typing import List
 
 def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
     """Soma duas matrizes"""
-    if len(x) != len(y):
+    if len(x) != len(y) or len(x[0]) != len(y[0]):
         return None
-    for i in x, y:
-        soma_matrizes = np.matrix(x[i], y[i])
-    # TODO: implementar
-    # a soma de duas matrizes [[1, 2, 4], [2, 3, 4]] + [[2, 3, 4], [1, 2, 4]] é [[3, 5, 8], [3, 5, 8]]
-    # a soma só pode ser realizada se as matrizes tem a mesma quantidade de linhas e colunas.
-    # caso contrário, deve retornar None
-
+    rows = len(x)
+    columns = len(x[0])
+    soma_matrizes = [[0.0] * columns for _ in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
+            soma_matrizes[i][j] = x[i][j] + y[i][j]
+    return soma_matrizes
 
 def multiplicação_por_escalar(matriz: list[list[float]], escalar: float) -> list[list[float]]:
     """Multiplica uma matriz por um escalar"""
-    # TODO: implementar
-    # a multiplicação de uma matriz [[1, 2, 4], [2, 3, 4]] por um escalar 2 é [[2, 4, 8], [4, 6, 8]]
-
+    rows = len(matriz)
+    columns = len(matriz[0])
+    conta = [[0.0] * columns for _ in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
+            conta[i][j] = matriz[i][j] * escalar
 
 def multiplicação(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
     """Multiplica duas matrizes"""
@@ -31,11 +34,14 @@ def multiplicação(x: list[list[float]], y: list[list[float]]) -> list[list[flo
 
 def norma(x: list[list[float]]) -> float:
     """Calcula a norma de uma matriz"""
-    # TODO: implementar
-    # a norma de uma matriz [[1, 2, 4], [2, 3, 4]] é 6.928203230275509
-    # ela consiste em calcular a raiz quadrada da soma dos quadrados dos elementos da matriz
-    # caso a matriz esteja vazia deve-se retornar 0
-
+    if len(x) == 0 or len(x[0]) == 0:
+        return None
+    quadrado_soma = 0.0
+    for i in x:
+        for element in i:
+            quadrado_soma += element ** 2
+    norma = math.sqrt(quadrado_soma)
+    return norma
 
 def é_simétrica(x: list[list[float]]) -> bool:
     """Verifica se uma matriz é simétrica"""
