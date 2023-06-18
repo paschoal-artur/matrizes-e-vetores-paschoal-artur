@@ -1,8 +1,14 @@
 """Módulo com as funções de manipulação de matrizes."""
-
+import math
+import numpy as np
+from typing import List
 
 def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
     """Soma duas matrizes"""
+    if len(x) != len(y):
+        return None
+    for i in x, y:
+        soma_matrizes = np.matrix(x[i], y[i])
     # TODO: implementar
     # a soma de duas matrizes [[1, 2, 4], [2, 3, 4]] + [[2, 3, 4], [1, 2, 4]] é [[3, 5, 8], [3, 5, 8]]
     # a soma só pode ser realizada se as matrizes tem a mesma quantidade de linhas e colunas.
