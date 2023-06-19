@@ -45,12 +45,11 @@ def norma(x: list[list[float]]) -> float:
 
 def é_simétrica(x: list[list[float]]) -> bool:
     """Verifica se uma matriz é simétrica"""
-    # TODO: implementar
-    # uma matriz é simétrica se ela é quadrada e se ela é igual a sua transposta
-    # a transposta de uma matriz é a matriz que tem as linhas da matriz original como colunas e as colunas da matriz original como linhas
-
+    matrix = np.array(x)
+    transpose_matrix = np.transpose(matrix)
+    return np.array_equal(matrix, transpose_matrix)
 
 def transposta(x: list[list[float]]) -> list[list[float]]:
     """Calcula a transposta de uma matriz"""
-    # TODO: implementar
-    # a transposta de uma matriz [[1, 2, 4], [2, 3, 4]] é [[1, 2], [2, 3], [4, 4]]
+    transposed_matrix = np.transpose(x)
+    return transposed_matrix.tolist()
