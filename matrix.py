@@ -1,7 +1,10 @@
 """Módulo com as funções de manipulação de matrizes."""
 import math
+
 import numpy as np
-from typing import List
+
+import tipos
+
 
 def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
     """Soma duas matrizes"""
@@ -15,8 +18,10 @@ def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None
             soma_matrizes[i][j] = x[i][j] + y[i][j]
     return soma_matrizes
 
-def multiplicação_por_escalar(matriz: list[list[float]], escalar: float) -> list[list[float]]:
-    """Multiplica uma matriz por um escalar"""
+
+def multiplicação_por_escalar(
+    matriz: list[list[float]], escalar: float
+) -> list[list[float]]:
     rows = len(matriz)
     columns = len(matriz[0])
     conta = [[0.0] * columns for _ in range(rows)]
@@ -24,7 +29,10 @@ def multiplicação_por_escalar(matriz: list[list[float]], escalar: float) -> li
         for j in range(columns):
             conta[i][j] = matriz[i][j] * escalar
 
-def multiplicação(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
+
+def multiplicação(
+    x: list[list[float]], y: list[list[float]]
+) -> list[list[float]] | None:
     """Multiplica duas matrizes"""
     # TODO: implementar
     # a multiplicação de duas matrizes [[1, 2, 4], [2, 3, 4]] por [[2, 3, 4], [1, 2, 4]] é [[10, 17, 28], [12, 20, 32]]
@@ -39,15 +47,17 @@ def norma(x: list[list[float]]) -> float:
     quadrado_soma = 0.0
     for i in x:
         for element in i:
-            quadrado_soma += element ** 2
-    norma = math.sqrt(quadrado_soma)
-    return norma
+            quadrado_soma += element**2
+    norma_calculada = math.sqrt(quadrado_soma)
+    return norma_calculada
+
 
 def é_simétrica(x: list[list[float]]) -> bool:
     """Verifica se uma matriz é simétrica"""
     matrix = np.array(x)
     transpose_matrix = np.transpose(matrix)
     return np.array_equal(matrix, transpose_matrix)
+
 
 def transposta(x: list[list[float]]) -> list[list[float]]:
     """Calcula a transposta de uma matriz"""

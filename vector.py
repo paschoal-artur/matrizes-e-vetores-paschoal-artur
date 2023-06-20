@@ -3,6 +3,8 @@ import math
 
 import numpy as np
 
+import tipos
+
 
 def norma(x: list[float]) -> float | None:
     """Calcula a norma de um vetor"""
