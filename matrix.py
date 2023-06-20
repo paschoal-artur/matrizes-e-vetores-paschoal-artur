@@ -3,10 +3,10 @@ import math
 
 import numpy as np
 
-import tipos
+from tipos import Escalar, Matriz
 
 
-def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
+def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
     if len(x) != len(y) or len(x[0]) != len(y[0]):
         return None
@@ -19,7 +19,8 @@ def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None
     return soma_matrizes
 
 
-def multiplying_by_scalar(matriz: list[list[float]], escalar: float) -> list[list[float]]:
+def multiplying_by_scalar(matriz: Matriz, escalar: Escalar) -> Matriz:
+    """Multiplicando por um escalar"""
     rows = len(matriz)
     columns = len(matriz[0])
     conta = [[0.0] * columns for _ in range(rows)]
@@ -28,7 +29,8 @@ def multiplying_by_scalar(matriz: list[list[float]], escalar: float) -> list[lis
             conta[i][j] = matriz[i][j] * escalar
 
 
-def multiplication(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
+def multiplication(x: Matriz, y: Matriz) -> Matriz | None:
+    """"Multiplicando matrizes"""
     if len(x[0]) != len(y):
         return None
 
@@ -40,7 +42,7 @@ def multiplication(x: list[list[float]], y: list[list[float]]) -> list[list[floa
 
     return result
 
-def norma(x: list[list[float]]) -> float:
+def norma(x: Matriz) -> Escalar:
     """Calcula a norma de uma matriz"""
     if len(x) == 0 or len(x[0]) == 0:
         return None
@@ -52,14 +54,14 @@ def norma(x: list[list[float]]) -> float:
     return norma_calculada
 
 
-def is_simmetric(x: list[list[float]]) -> bool:
+def is_simmetric(x: Matriz) -> bool:
     """Verifica se uma matriz é simétrica"""
     matrix = np.array(x)
     transpose_matrix = np.transpose(matrix)
     return np.array_equal(matrix, transpose_matrix)
 
 
-def transposta(x: list[list[float]]) -> list[list[float]]:
+def transposta(x: Matriz) -> Matriz:
     """Calcula a transposta de uma matriz"""
     transposed_matrix = np.transpose(x)
     return transposed_matrix.tolist()

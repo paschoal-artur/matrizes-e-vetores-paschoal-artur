@@ -3,10 +3,10 @@ import math
 
 import numpy as np
 
-import tipos
+from tipos import Escalar, Matriz, Vetor
 
 
-def norma(x: list[float]) -> float | None:
+def norma(x: Vetor) -> Escalar | None:
     """Calcula a norma de um vetor"""
     if x == 0:
         return None
@@ -17,7 +17,7 @@ def norma(x: list[float]) -> float | None:
     return norma_calculada
 
 
-def soma(x: list[float], y: list[float]) -> list[float] | None:
+def soma(x: Vetor, y: Vetor) -> Vetor | None:
     """Soma dois vetores"""
     if len(x) != len(y):
         return None
@@ -27,12 +27,13 @@ def soma(x: list[float], y: list[float]) -> list[float] | None:
     return soma_vetores
 
 
-def multiplying_by_scalar(vetor: list[float], escalar: float) -> list[float]:
+def multiplying_by_scalar(vetor: Vetor, escalar: Escalar) -> Vetor:
+    """Multiplicando por escalar"""
     vetor_multiplicado = [element * escalar for element in vetor]
     return vetor_multiplicado
 
 
-def produto_interno(x: list[float], y: list[float]) -> float | None:
+def produto_interno(x: Vetor, y: Vetor) -> Escalar | None:
     """Calcula o produto interno de dois vetores"""
     if len(x) != len(y):
         return None
@@ -42,7 +43,7 @@ def produto_interno(x: list[float], y: list[float]) -> float | None:
     return produto_vetores
 
 
-def produto_vetorial(x: list[float], y: list[float]) -> list[float] | None:
+def produto_vetorial(x: Vetor, y: Vetor) -> Vetor | None:
     """Calcula o produto vetorial de dois vetores"""
     if len(x) != 3 or len(y) != 3:
         return None
@@ -50,6 +51,14 @@ def produto_vetorial(x: list[float], y: list[float]) -> list[float] | None:
     return resultado.tolist()
 
 
-def produto_diadico(x: list[float], y: list[float]) -> list[list[float]] | None:
-    if not x and not y:
-        print("Hello world")
+def produto_diadico(x: Vetor, y: Vetor) -> Matriz | None:
+    """Calculo do produto diadico"""
+    if len(x) == 0 or len(y) == 0:
+        return None
+    result = []
+    for x_i in x:
+        row = []
+        for y_j in y:
+            row.append(x_i * y_j)
+        result.append(row)
+    return result
