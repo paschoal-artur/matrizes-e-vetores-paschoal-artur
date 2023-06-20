@@ -22,8 +22,8 @@ def soma(x: Vetor, y: Vetor) -> Vetor | None:
     if len(x) != len(y):
         return None
     soma_vetores = []
-    for i, xi in enumerate(x):
-        soma_vetores.append(xi + y[i])
+    for i, x_i in enumerate(x):
+        soma_vetores.append(x_i + y[i])
     return soma_vetores
 
 
@@ -40,8 +40,8 @@ def produto_interno(x: Vetor, y: Vetor) -> Escalar | None:
     if x == [] and y == []:
         return 0
     produto_vetores = 0.0
-    for i, xi in enumerate(x):
-        produto_vetores += xi * y[i]
+    for i, x_i in enumerate(x):
+        produto_vetores += x_i * y[i]
     return produto_vetores
 
 

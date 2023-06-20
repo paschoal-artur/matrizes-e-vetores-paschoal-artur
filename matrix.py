@@ -8,8 +8,10 @@ from tipos import Escalar, Matriz
 
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
-    if len(x) != len(y) or len(x[0]) != len(y[0]):
+    if x == [] and y == []:
         return []
+    if len(x) != len(y) or len(x[0]) != len(y[0]):
+        return None
     rows = len(x)
     columns = len(x[0])
     soma_matrizes = [[0.0] * columns for _ in range(rows)]
@@ -17,6 +19,7 @@ def soma(x: Matriz, y: Matriz) -> Matriz | None:
         for j in range(columns):
             soma_matrizes[i][j] = x[i][j] + y[i][j]
     return soma_matrizes
+
 
 def multiplying_by_scalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     """Multiplicando por um escalar"""
@@ -29,7 +32,7 @@ def multiplying_by_scalar(matriz: Matriz, escalar: Escalar) -> Matriz:
 
 
 def multiplication(x: Matriz, y: Matriz) -> Matriz | None:
-    """"Multiplicando matrizes"""
+    """ "Multiplicando matrizes"""
     if len(x[0]) != len(y):
         return None
 
@@ -41,10 +44,11 @@ def multiplication(x: Matriz, y: Matriz) -> Matriz | None:
 
     return result
 
+
 def norma(x: Matriz) -> Escalar:
     """Calcula a norma de uma matriz"""
-    if len(x) == 0 or len(x[0]) == 0:
-        return None
+    if len(x) == [] or len(x[0]) == []:
+        return 0
     quadrado_soma = 0.0
     for i in x:
         for element in i:
@@ -65,6 +69,8 @@ def transposta(x: Matriz) -> Matriz:
     transposed_matrix = np.transpose(x)
     return transposed_matrix.tolist()
 
-matriz_t1 = [1, 2]
-matriz_t2 = [2, 3]
-print(soma(matriz_t1, matriz_t2))
+
+matriz_t1 = [[1, 2, 4], [2, 3, 4], [1, 2, 4]]
+matriz_t2 = [[2, 3], [1, 2]]
+
+print(transposta(matriz_t1))
