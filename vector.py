@@ -8,7 +8,7 @@ from tipos import Escalar, Matriz, Vetor
 
 def norma(x: Vetor) -> Escalar | None:
     """Calcula a norma de um vetor"""
-    if x == 0:
+    if x == []:
         return None
     quadrado_soma = 0.0
     for element in x:
@@ -22,8 +22,8 @@ def soma(x: Vetor, y: Vetor) -> Vetor | None:
     if len(x) != len(y):
         return None
     soma_vetores = []
-    for i in enumerate(x):
-        soma_vetores.append(x[i] + y[i])
+    for i, xi in enumerate(x):
+        soma_vetores.append(xi + y[i])
     return soma_vetores
 
 
@@ -37,9 +37,11 @@ def produto_interno(x: Vetor, y: Vetor) -> Escalar | None:
     """Calcula o produto interno de dois vetores"""
     if len(x) != len(y):
         return None
+    if x == [] and y == []:
+        return 0
     produto_vetores = 0.0
-    for i in enumerate(x):
-        produto_vetores += x[i] * y[i]
+    for i, xi in enumerate(x):
+        produto_vetores += xi * y[i]
     return produto_vetores
 
 
@@ -54,6 +56,8 @@ def produto_vetorial(x: Vetor, y: Vetor) -> Vetor | None:
 def produto_diadico(x: Vetor, y: Vetor) -> Matriz | None:
     """Calculo do produto diadico"""
     if len(x) == 0 or len(y) == 0:
+        return []
+    if len(x) != len(y):
         return None
     result = []
     for x_i in x:
