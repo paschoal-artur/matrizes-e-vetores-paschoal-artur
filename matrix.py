@@ -36,10 +36,15 @@ def multiplication(x: Matriz, y: Matriz) -> Matriz | None:
     if len(x[0]) != len(y):
         return None
 
-    result = [[0.0 for _ in enumerate(y[0])] for _ in enumerate(x)]
-    for i in enumerate(x):
-        for j in enumerate(y[0]):
-            for k in enumerate(y):
+    rows_x = len(x)
+    cols_x = len(x[0])
+    cols_y = len(y)
+
+    result = [[0.0] * cols_y for _ in range(rows_x)]
+
+    for i in range(rows_x):
+        for j in range(cols_y):
+            for k in range(cols_x):
                 result[i][j] += x[i][k] * y[k][j]
 
     return result
@@ -47,7 +52,7 @@ def multiplication(x: Matriz, y: Matriz) -> Matriz | None:
 
 def norma(x: Matriz) -> Escalar:
     """Calcula a norma de uma matriz"""
-    if len(x) == [] or len(x[0]) == []:
+    if len(x) == [] and len(x[0]) == []:
         return 0
     quadrado_soma = 0.0
     for i in x:
@@ -70,7 +75,7 @@ def transposta(x: Matriz) -> Matriz:
     return transposed_matrix.tolist()
 
 
-matriz_t1 = [[1, 2, 4], [2, 3, 4], [1, 2, 4]]
-matriz_t2 = [[2, 3], [1, 2]]
+matriz_t1 = [[1, 2, 3], [4, 5, 6]]
+matriz_t2 = [[2, 3], [4, 5], [6, 7]]
 
-print(transposta(matriz_t1))
+print(multiplication(matriz_t1, matriz_t2))
