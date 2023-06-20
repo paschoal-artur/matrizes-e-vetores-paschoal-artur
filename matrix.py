@@ -19,9 +19,7 @@ def soma(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None
     return soma_matrizes
 
 
-def multiplicação_por_escalar(
-    matriz: list[list[float]], escalar: float
-) -> list[list[float]]:
+def multiplying_by_scalar(matriz: list[list[float]], escalar: float) -> list[list[float]]:
     rows = len(matriz)
     columns = len(matriz[0])
     conta = [[0.0] * columns for _ in range(rows)]
@@ -30,15 +28,17 @@ def multiplicação_por_escalar(
             conta[i][j] = matriz[i][j] * escalar
 
 
-def multiplicação(
-    x: list[list[float]], y: list[list[float]]
-) -> list[list[float]] | None:
-    """Multiplica duas matrizes"""
-    # TODO: implementar
-    # a multiplicação de duas matrizes [[1, 2, 4], [2, 3, 4]] por [[2, 3, 4], [1, 2, 4]] é [[10, 17, 28], [12, 20, 32]]
-    # a multiplicação só pode ser realizada se a quantidade de colunas da primeira matriz é igual a quantidade de linhas da segunda matriz.
-    # caso contrário, deve retornar None
+def multiplication(x: list[list[float]], y: list[list[float]]) -> list[list[float]] | None:
+    if len(x[0]) != len(y):
+        return None
 
+    result = [[0.0 for _ in range(len(y[0]))] for _ in range(len(x))]
+    for i in enumerate(x):
+        for j in enumerate(y[0]):
+            for k in enumerate(y):
+                result[i][j] += x[i][k] * y[k][j]
+
+    return result
 
 def norma(x: list[list[float]]) -> float:
     """Calcula a norma de uma matriz"""
@@ -52,7 +52,7 @@ def norma(x: list[list[float]]) -> float:
     return norma_calculada
 
 
-def é_simétrica(x: list[list[float]]) -> bool:
+def is_simmetric(x: list[list[float]]) -> bool:
     """Verifica se uma matriz é simétrica"""
     matrix = np.array(x)
     transpose_matrix = np.transpose(matrix)

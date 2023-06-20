@@ -27,7 +27,7 @@ def soma(x: list[float], y: list[float]) -> list[float] | None:
     return soma_vetores
 
 
-def multiplicação_por_escalar(vetor: list[float], escalar: float) -> list[float]:
+def multiplying_by_scalar(vetor: list[float], escalar: float) -> list[float]:
     vetor_multiplicado = [element * escalar for element in vetor]
     return vetor_multiplicado
 
@@ -37,7 +37,7 @@ def produto_interno(x: list[float], y: list[float]) -> float | None:
     if len(x) != len(y):
         return None
     produto_vetores = 0.0
-    for i in range(len(x)):
+    for i in enumerate(x):
         produto_vetores += x[i] * y[i]
     return produto_vetores
 
