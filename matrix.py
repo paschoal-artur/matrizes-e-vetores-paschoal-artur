@@ -9,7 +9,7 @@ from tipos import Escalar, Matriz
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
     if len(x) != len(y) or len(x[0]) != len(y[0]):
-        return None
+        return []
     rows = len(x)
     columns = len(x[0])
     soma_matrizes = [[0.0] * columns for _ in range(rows)]
@@ -17,7 +17,6 @@ def soma(x: Matriz, y: Matriz) -> Matriz | None:
         for j in range(columns):
             soma_matrizes[i][j] = x[i][j] + y[i][j]
     return soma_matrizes
-
 
 def multiplying_by_scalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     """Multiplicando por um escalar"""
@@ -65,3 +64,7 @@ def transposta(x: Matriz) -> Matriz:
     """Calcula a transposta de uma matriz"""
     transposed_matrix = np.transpose(x)
     return transposed_matrix.tolist()
+
+matriz_t1 = [1, 2]
+matriz_t2 = [2, 3]
+print(soma(matriz_t1, matriz_t2))
