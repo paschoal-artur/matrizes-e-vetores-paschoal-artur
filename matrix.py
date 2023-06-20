@@ -32,7 +32,7 @@ def multiplication(x: list[list[float]], y: list[list[float]]) -> list[list[floa
     if len(x[0]) != len(y):
         return None
 
-    result = [[0.0 for _ in range(len(y[0]))] for _ in range(len(x))]
+    result = [[0.0 for _ in enumerate(y[0])] for _ in enumerate(x)]
     for i in enumerate(x):
         for j in enumerate(y[0]):
             for k in enumerate(y):
