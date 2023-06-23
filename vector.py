@@ -27,7 +27,7 @@ def soma(x: Vetor, y: Vetor) -> Vetor | None:
     return soma_vetores
 
 
-def multiplying_by_scalar(vetor: Vetor, escalar: Escalar) -> Vetor:
+def multiplicacao_por_escalar(vetor: Vetor, escalar: Escalar) -> Vetor:
     """Multiplicando por escalar"""
     vetor_multiplicado = [element * escalar for element in vetor]
     return vetor_multiplicado
