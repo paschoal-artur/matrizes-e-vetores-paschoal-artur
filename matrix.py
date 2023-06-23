@@ -21,7 +21,7 @@ def soma(x: Matriz, y: Matriz) -> Matriz | None:
     return soma_matrizes
 
 
-def multiplying_by_scalar(matriz: Matriz, escalar: Escalar) -> Matriz:
+def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     """Multiplicando por um escalar"""
     rows = len(matriz)
     columns = len(matriz[0])
@@ -31,7 +31,7 @@ def multiplying_by_scalar(matriz: Matriz, escalar: Escalar) -> Matriz:
             conta[i][j] = matriz[i][j] * escalar
 
 
-def multiplication(x: Matriz, y: Matriz) -> Matriz | None:
+def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
     """ "Multiplicando matrizes"""
     if len(x[0]) != len(y):
         return None
@@ -62,7 +62,7 @@ def norma(x: Matriz) -> Escalar:
     return norma_calculada
 
 
-def is_simmetric(x: Matriz) -> bool:
+def eh_simetrica(x: Matriz) -> bool:
     """Verifica se uma matriz é simétrica"""
     matrix = np.array(x)
     transpose_matrix = np.transpose(matrix)
@@ -74,8 +74,8 @@ def transposta(x: Matriz) -> Matriz:
     transposed_matrix = np.transpose(x)
     return transposed_matrix.tolist()
 
+if __name__ == "__main__":
+    matriz_t1 = [[1, 2, 3], [4, 5, 6]]
+    matriz_t2 = [[2, 3], [4, 5], [6, 7]]
 
-matriz_t1 = [[1, 2, 3], [4, 5, 6]]
-matriz_t2 = [[2, 3], [4, 5], [6, 7]]
-
-print(multiplication(matriz_t1, matriz_t2))
+    print(multiplication(matriz_t1, matriz_t2))
