@@ -78,4 +78,4 @@ if __name__ == "__main__":
     matriz_t1 = [[1, 2, 3], [4, 5, 6]]
     matriz_t2 = [[2, 3], [4, 5], [6, 7]]
 
-    print(multiplication(matriz_t1, matriz_t2))
+    print(multiplicacao(matriz_t1, matriz_t2))
