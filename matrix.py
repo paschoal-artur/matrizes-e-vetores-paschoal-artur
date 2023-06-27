@@ -29,13 +29,15 @@ def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     for i in range(rows):
         for j in range(columns):
             conta[i][j] = matriz[i][j] * escalar
-
+    return conta
 
 def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
     """ "Multiplicando matrizes"""
+    if len(x[0]) == 0 or len(y[0]) == 0 or len(y) == 0 or len(x) == 0:
+        return None
     if len(x[0]) != len(y):
         return None
-
+    
     rows_x = len(x)
     cols_x = len(x[0])
     cols_y = len(y)
