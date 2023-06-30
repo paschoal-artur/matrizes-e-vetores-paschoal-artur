@@ -5,12 +5,8 @@ import numpy as np
 
 from tipos import Escalar, Matriz
 
-from typing import List
-
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
-    if len(x, y) == 0 :
-        return []
     if len(x) != len(y) or len(x[0]) != len(y[0]):
         return None
     rows = len(x)
@@ -27,9 +23,7 @@ def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     if len(matriz) == 0 or len(matriz[0]) == 0:
         return []
     rows = len(matriz)
-    columns = len(matriz[0])  # TODO: Aqui se a primeira linha for vazia, dá erro...
-    # TODO: Uma matriz vazia não tem o índice zero.
-    # TODO: uma opção é fazer um if para verificar se a matriz é vazia e retornar vazio nesse caso
+    columns = len(matriz[0])
     conta = [[0.0] * columns for _ in range(rows)]
     for i in range(rows):
         for j in range(columns):
@@ -39,8 +33,6 @@ def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
 
 def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
     """ "Multiplicando matrizes"""
-    # TODO: aqui também dá erro se a matriz for vazia
-    # TODO: basicamente se len(x) == 0 ou len(y) == 0 é pra retornar uma matriz vazia.
     if len(x) == 0 or len(y) == 0 or len(x[0]) == 0 or len(y[0]) == 0:
         return []
     if len(x[0]) != len(y):
@@ -48,10 +40,8 @@ def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
 
     rows_x = len(x)
     cols_x = len(x[0])
-    # TODO: o cols_y aqui está calculando a quantidade de linhas de y e não de colunas
     cols_y = len(y[0])
 
-    # TODO: o resultado tem que ter o número de linhas de x e o número de colunas de y
     result = [[0.0] * cols_y for _ in range(rows_x)]
 
     for i in range(rows_x):
