@@ -85,7 +85,3 @@ def transposta(x: Matriz) -> Matriz:
     """Calcula a transposta de uma matriz"""
     transposed_matrix = np.transpose(x)
     return transposed_matrix.tolist()
-
-
-if __name__ == "__main__":
-    multiplicacao([[1, 2]], [[2], [3]])
