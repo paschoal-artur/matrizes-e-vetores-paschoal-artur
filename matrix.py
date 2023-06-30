@@ -5,6 +5,7 @@ import numpy as np
 
 from tipos import Escalar, Matriz
 
+from typing import List
 
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
@@ -23,6 +24,8 @@ def soma(x: Matriz, y: Matriz) -> Matriz | None:
 
 def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     """Multiplicando por um escalar"""
+    if len(matriz) == 0 or len(matriz[0]) == 0:
+        return [[]]
     rows = len(matriz)
     columns = len(matriz[0])  # TODO: Aqui se a primeira linha for vazia, dá erro...
     # TODO: Uma matriz vazia não tem o índice zero.
@@ -38,15 +41,15 @@ def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
     """ "Multiplicando matrizes"""
     # TODO: aqui também dá erro se a matriz for vazia
     # TODO: basicamente se len(x) == 0 ou len(y) == 0 é pra retornar uma matriz vazia.
-    if len(x[0]) == 0 or len(y[0]) == 0 or len(y) == 0 or len(x) == 0:
-        return None
+    if len(x) == 0 or len(y) == 0 or len(x[0]) == 0 or len(y[0]) == 0:
+        return [[]]
     if len(x[0]) != len(y):
         return None
 
     rows_x = len(x)
     cols_x = len(x[0])
     # TODO: o cols_y aqui está calculando a quantidade de linhas de y e não de colunas
-    cols_y = len(y)
+    cols_y = len(y[0])
 
     # TODO: o resultado tem que ter o número de linhas de x e o número de colunas de y
     result = [[0.0] * cols_y for _ in range(rows_x)]
