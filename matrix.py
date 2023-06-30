@@ -5,6 +5,7 @@ import numpy as np
 
 from tipos import Escalar, Matriz
 
+
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
     if len(x) == 0 and len(y) == 0:
