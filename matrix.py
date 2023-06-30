@@ -7,6 +7,8 @@ from tipos import Escalar, Matriz
 
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
+    if len(x) == 0 and len(y) == 0:
+        return []
     if len(x) != len(y) or len(x[0]) != len(y[0]):
         return None
     rows = len(x)
