@@ -24,24 +24,31 @@ def soma(x: Matriz, y: Matriz) -> Matriz | None:
 def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     """Multiplicando por um escalar"""
     rows = len(matriz)
-    columns = len(matriz[0])
+    columns = len(matriz[0])  # TODO: Aqui se a primeira linha for vazia, dá erro...
+    # TODO: Uma matriz vazia não tem o índice zero.
+    # TODO: uma opção é fazer um if para verificar se a matriz é vazia e retornar vazio nesse caso
     conta = [[0.0] * columns for _ in range(rows)]
     for i in range(rows):
         for j in range(columns):
             conta[i][j] = matriz[i][j] * escalar
     return conta
 
+
 def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
     """ "Multiplicando matrizes"""
+    # TODO: aqui também dá erro se a matriz for vazia
+    # TODO: basicamente se len(x) == 0 ou len(y) == 0 é pra retornar uma matriz vazia.
     if len(x[0]) == 0 or len(y[0]) == 0 or len(y) == 0 or len(x) == 0:
         return None
     if len(x[0]) != len(y):
         return None
-    
+
     rows_x = len(x)
     cols_x = len(x[0])
+    # TODO: o cols_y aqui está calculando a quantidade de linhas de y e não de colunas
     cols_y = len(y)
 
+    # TODO: o resultado tem que ter o número de linhas de x e o número de colunas de y
     result = [[0.0] * cols_y for _ in range(rows_x)]
 
     for i in range(rows_x):
@@ -77,4 +84,5 @@ def transposta(x: Matriz) -> Matriz:
     return transposed_matrix.tolist()
 
 
-    print(multiplicacao(matriz_t1, matriz_t2))
+if __name__ == "__main__":
+    multiplicacao([[1, 2]], [[2], [3]])
