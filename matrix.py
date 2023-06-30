@@ -9,7 +9,7 @@ from typing import List
 
 def soma(x: Matriz, y: Matriz) -> Matriz | None:
     """Soma duas matrizes"""
-    if x == 0 and y == 0:
+    if len(x, y) == 0 :
         return []
     if len(x) != len(y) or len(x[0]) != len(y[0]):
         return None
