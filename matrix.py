@@ -25,7 +25,7 @@ def soma(x: Matriz, y: Matriz) -> Matriz | None:
 def multiplicacao_por_escalar(matriz: Matriz, escalar: Escalar) -> Matriz:
     """Multiplicando por um escalar"""
     if len(matriz) == 0 or len(matriz[0]) == 0:
-        return [[]]
+        return []
     rows = len(matriz)
     columns = len(matriz[0])  # TODO: Aqui se a primeira linha for vazia, dá erro...
     # TODO: Uma matriz vazia não tem o índice zero.
@@ -42,7 +42,7 @@ def multiplicacao(x: Matriz, y: Matriz) -> Matriz | None:
     # TODO: aqui também dá erro se a matriz for vazia
     # TODO: basicamente se len(x) == 0 ou len(y) == 0 é pra retornar uma matriz vazia.
     if len(x) == 0 or len(y) == 0 or len(x[0]) == 0 or len(y[0]) == 0:
-        return [[]]
+        return []
     if len(x[0]) != len(y):
         return None
 
